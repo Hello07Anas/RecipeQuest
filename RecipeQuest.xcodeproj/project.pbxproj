@@ -9,21 +9,38 @@
 /* Begin PBXBuildFile section */
 		4CAE87762C6B7CA8009BF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87752C6B7CA8009BF625 /* AppDelegate.swift */; };
 		4CAE87782C6B7CA8009BF625 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87772C6B7CA8009BF625 /* SceneDelegate.swift */; };
-		4CAE877A2C6B7CA8009BF625 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87792C6B7CA8009BF625 /* ViewController.swift */; };
 		4CAE877D2C6B7CA8009BF625 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4CAE877C2C6B7CA8009BF625 /* Base */; };
 		4CAE877F2C6B7CAC009BF625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CAE877E2C6B7CAC009BF625 /* Assets.xcassets */; };
 		4CAE87822C6B7CAC009BF625 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4CAE87812C6B7CAC009BF625 /* Base */; };
+		4CAE878B2C6B8166009BF625 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4CAE878A2C6B8166009BF625 /* IQKeyboardManagerSwift */; };
+		4CAE878E2C6B81EB009BF625 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4CAE878D2C6B81EB009BF625 /* Kingfisher */; };
+		4CAE87912C6B8252009BF625 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4CAE87902C6B8252009BF625 /* Alamofire */; };
+		4CAE87942C6B82A1009BF625 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87932C6B82A1009BF625 /* Constants.swift */; };
+		4CAE87972C6B8317009BF625 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87962C6B8317009BF625 /* Recipe.swift */; };
+		4CAE879B2C6B8359009BF625 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE879A2C6B8359009BF625 /* RecipeListViewModel.swift */; };
+		4CAE879D2C6B836E009BF625 /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE879C2C6B836E009BF625 /* RecipeDetailViewModel.swift */; };
+		4CAE879F2C6B83FA009BF625 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE879E2C6B83FA009BF625 /* RecipeListViewController.swift */; };
+		4CAE87A12C6B8414009BF625 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */; };
+		4CAE87A32C6B8438009BF625 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87A22C6B8438009BF625 /* RecipeTableViewCell.swift */; };
+		4CAE87A62C6B84BF009BF625 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87A52C6B84BF009BF625 /* RecipeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4CAE87722C6B7CA8009BF625 /* RecipeQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAE87752C6B7CA8009BF625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CAE87772C6B7CA8009BF625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4CAE87792C6B7CA8009BF625 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CAE877C2C6B7CA8009BF625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CAE877E2C6B7CAC009BF625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CAE87812C6B7CAC009BF625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CAE87832C6B7CAC009BF625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CAE87932C6B82A1009BF625 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4CAE87962C6B8317009BF625 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		4CAE879A2C6B8359009BF625 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
+		4CAE879C2C6B836E009BF625 /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
+		4CAE879E2C6B83FA009BF625 /* RecipeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
+		4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		4CAE87A22C6B8438009BF625 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		4CAE87A52C6B84BF009BF625 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAE87912C6B8252009BF625 /* Alamofire in Frameworks */,
+				4CAE878E2C6B81EB009BF625 /* Kingfisher in Frameworks */,
+				4CAE878B2C6B8166009BF625 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +76,94 @@
 		4CAE87742C6B7CA8009BF625 /* RecipeQuest */ = {
 			isa = PBXGroup;
 			children = (
-				4CAE87752C6B7CA8009BF625 /* AppDelegate.swift */,
-				4CAE87772C6B7CA8009BF625 /* SceneDelegate.swift */,
-				4CAE87792C6B7CA8009BF625 /* ViewController.swift */,
-				4CAE877B2C6B7CA8009BF625 /* Main.storyboard */,
-				4CAE877E2C6B7CAC009BF625 /* Assets.xcassets */,
-				4CAE87802C6B7CAC009BF625 /* LaunchScreen.storyboard */,
+				4CAE87952C6B82CC009BF625 /* Models */,
+				4CAE87982C6B8321009BF625 /* ViewModels */,
+				4CAE87992C6B8331009BF625 /* Views */,
+				4CAE87A42C6B84A6009BF625 /* Services */,
+				4CAE87922C6B8284009BF625 /* Utilities */,
+				4CAE87A72C6B8554009BF625 /* Storyboards */,
+				4CAE87A92C6B858F009BF625 /* Supporting Files */,
+				4CAE87A82C6B8582009BF625 /* Assets */,
+				4CAE87AA2C6B85A4009BF625 /* LaunchScreen */,
 				4CAE87832C6B7CAC009BF625 /* Info.plist */,
 			);
 			path = RecipeQuest;
+			sourceTree = "<group>";
+		};
+		4CAE87922C6B8284009BF625 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE87932C6B82A1009BF625 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4CAE87952C6B82CC009BF625 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE87962C6B8317009BF625 /* Recipe.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4CAE87982C6B8321009BF625 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE879A2C6B8359009BF625 /* RecipeListViewModel.swift */,
+				4CAE879C2C6B836E009BF625 /* RecipeDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4CAE87992C6B8331009BF625 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE879E2C6B83FA009BF625 /* RecipeListViewController.swift */,
+				4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */,
+				4CAE87A22C6B8438009BF625 /* RecipeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4CAE87A42C6B84A6009BF625 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE87A52C6B84BF009BF625 /* RecipeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4CAE87A72C6B8554009BF625 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE877B2C6B7CA8009BF625 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		4CAE87A82C6B8582009BF625 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE877E2C6B7CAC009BF625 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		4CAE87A92C6B858F009BF625 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE87752C6B7CA8009BF625 /* AppDelegate.swift */,
+				4CAE87772C6B7CA8009BF625 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CAE87AA2C6B85A4009BF625 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE87802C6B7CAC009BF625 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +182,11 @@
 			dependencies = (
 			);
 			name = RecipeQuest;
+			packageProductDependencies = (
+				4CAE878A2C6B8166009BF625 /* IQKeyboardManagerSwift */,
+				4CAE878D2C6B81EB009BF625 /* Kingfisher */,
+				4CAE87902C6B8252009BF625 /* Alamofire */,
+			);
 			productName = RecipeQuest;
 			productReference = 4CAE87722C6B7CA8009BF625 /* RecipeQuest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +215,11 @@
 				Base,
 			);
 			mainGroup = 4CAE87692C6B7CA8009BF625;
+			packageReferences = (
+				4CAE87892C6B8166009BF625 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				4CAE878C2C6B81EB009BF625 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4CAE878F2C6B8252009BF625 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 4CAE87732C6B7CA8009BF625 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +247,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CAE877A2C6B7CA8009BF625 /* ViewController.swift in Sources */,
+				4CAE879D2C6B836E009BF625 /* RecipeDetailViewModel.swift in Sources */,
 				4CAE87762C6B7CA8009BF625 /* AppDelegate.swift in Sources */,
+				4CAE87A12C6B8414009BF625 /* RecipeDetailViewController.swift in Sources */,
+				4CAE87A32C6B8438009BF625 /* RecipeTableViewCell.swift in Sources */,
+				4CAE879B2C6B8359009BF625 /* RecipeListViewModel.swift in Sources */,
 				4CAE87782C6B7CA8009BF625 /* SceneDelegate.swift in Sources */,
+				4CAE87942C6B82A1009BF625 /* Constants.swift in Sources */,
+				4CAE87A62C6B84BF009BF625 /* RecipeService.swift in Sources */,
+				4CAE879F2C6B83FA009BF625 /* RecipeListViewController.swift in Sources */,
+				4CAE87972C6B8317009BF625 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +477,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4CAE87892C6B8166009BF625 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
+		4CAE878C2C6B81EB009BF625 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		4CAE878F2C6B8252009BF625 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4CAE878A2C6B8166009BF625 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CAE87892C6B8166009BF625 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		4CAE878D2C6B81EB009BF625 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CAE878C2C6B81EB009BF625 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		4CAE87902C6B8252009BF625 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CAE878F2C6B8252009BF625 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CAE876A2C6B7CA8009BF625 /* Project object */;
 }
