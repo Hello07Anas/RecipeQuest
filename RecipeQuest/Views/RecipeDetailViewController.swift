@@ -6,24 +6,41 @@
 //
 
 import UIKit
-
+import Kingfisher
+ 
 class RecipeDetailViewController: UIViewController {
 
+    @IBOutlet weak var recipeImg: UIImageView!
+    @IBOutlet weak var recipeNameOT: UILabel!
+    @IBOutlet weak var recipeCaloriesOT: UILabel!
+    @IBOutlet weak var recipeTotalWeightOT: UILabel!
+    @IBOutlet weak var recipeTotalTimeOT: UILabel!
+    
+    var viewModel: RecipeDetailViewModel?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func backBtnTaped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
-    */
-
+    
+    func setupUI() {
+        guard let viewModel = viewModel else { return }
+        
+        recipeNameOT.text = viewModel.recipeName
+        recipeCaloriesOT.text = viewModel.caloriesText
+        recipeTotalWeightOT.text = viewModel.totalWeightText
+        recipeTotalTimeOT.text = viewModel.totalTimeText
+        
+        if let imageURL = viewModel.imageURL {
+            recipeImg.kf.setImage(with: imageURL, placeholder: UIImage(named: "recipeImgPlaceholder"))
+        } else {
+            recipeImg.image = UIImage(named: "recipeImgPlaceholder")
+        }
+    }
 }
