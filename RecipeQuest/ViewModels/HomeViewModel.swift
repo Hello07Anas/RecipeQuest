@@ -41,11 +41,7 @@ class HomeViewModel {
         }
     }
     
-    func fetchFilters() {
-        self.mainFilters = [Filter(name: "Health"), Filter(name: "Cuisine")]
-    }
-    
-    func updateSubFilters(forMainFilter mainFilter: String) {
-        self.subFilters = [Filter(name: "Low Sugar"), Filter(name: "Dairy-Free"), Filter(name: "Vegan")]
+    func clearRecipes() {
+        recipes.removeAll()
     }
 }

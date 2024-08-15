@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var recipesTableView: UITableView!
     @IBOutlet weak var upConstaintView: NSLayoutConstraint!
+    @IBOutlet weak var emptyBackgroundImg: UIImageView!
     
     private var viewModel = HomeViewModel()
     private var cancellables: Set<AnyCancellable> = []
@@ -107,7 +108,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, !query.isEmpty else { return }
-        
+    
         let endPoint = selectedFilters.joined(separator: "&")
         
         viewModel.fetchRecipes(query: query, endPoint: endPoint)
@@ -124,6 +125,13 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
 
         searchBar.resignFirstResponder()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            viewModel.clearRecipes()
+            recipesTableView.reloadData()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -131,6 +139,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        updateViewVisibility()
         return viewModel.recipes.count
     }
 
@@ -145,10 +154,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == viewModel.recipes.count - 1 {
             viewModel.getNextRecipes()
         }
-        
         return cell
     }
-
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -160,6 +167,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             let detailViewModel = RecipeDetailViewModel(recipe: selectedRecipe)
             detailVC.viewModel = detailViewModel
             navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
+    func updateViewVisibility() {
+        if viewModel.recipes.isEmpty {
+            emptyBackgroundImg.isHidden = false
+            recipesTableView.isHidden = true
+        } else {
+            emptyBackgroundImg.isHidden = true
+            recipesTableView.isHidden = false
         }
     }
 }

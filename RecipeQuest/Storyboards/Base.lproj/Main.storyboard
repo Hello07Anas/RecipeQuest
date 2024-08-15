@@ -16,7 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nCX-DW-Ey4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Recipe book-bro" translatesAutoresizingMaskIntoConstraints="NO" id="99H-XJ-WC8">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                            </imageView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nCX-DW-Ey4">
                                 <rect key="frame" x="16" y="119" width="361" height="683"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -74,7 +77,11 @@
                         <viewLayoutGuide key="safeArea" id="TwT-76-Z6h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="99H-XJ-WC8" firstAttribute="top" secondItem="TwT-76-Z6h" secondAttribute="top" id="Dx8-Bm-nFv"/>
+                            <constraint firstItem="99H-XJ-WC8" firstAttribute="leading" secondItem="TwT-76-Z6h" secondAttribute="leading" id="E6H-uX-rYN"/>
+                            <constraint firstItem="TwT-76-Z6h" firstAttribute="trailing" secondItem="99H-XJ-WC8" secondAttribute="trailing" id="KVp-x9-xrW"/>
                             <constraint firstItem="TwT-76-Z6h" firstAttribute="trailing" secondItem="nCX-DW-Ey4" secondAttribute="trailing" constant="16" id="ObB-1W-w8o"/>
+                            <constraint firstItem="TwT-76-Z6h" firstAttribute="bottom" secondItem="99H-XJ-WC8" secondAttribute="bottom" id="Pqj-ef-Fgg"/>
                             <constraint firstItem="TwT-76-Z6h" firstAttribute="bottom" secondItem="nCX-DW-Ey4" secondAttribute="bottom" constant="16" id="ZkU-as-MFP"/>
                             <constraint firstItem="nCX-DW-Ey4" firstAttribute="top" secondItem="TwT-76-Z6h" secondAttribute="top" constant="16" id="gsn-Jn-ccc"/>
                             <constraint firstItem="nCX-DW-Ey4" firstAttribute="leading" secondItem="TwT-76-Z6h" secondAttribute="leading" constant="16" id="wen-yb-IKd"/>
@@ -82,6 +89,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bLw-AA-2ZP"/>
                     <connections>
+                        <outlet property="emptyBackgroundImg" destination="99H-XJ-WC8" id="NMm-tx-AUA"/>
                         <outlet property="recipesTableView" destination="nCX-DW-Ey4" id="tvG-b6-rYA"/>
                         <outlet property="upConstaintView" destination="gsn-Jn-ccc" id="Wnw-RT-Obo"/>
                     </connections>
@@ -219,6 +227,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Recipe book-bro" width="2000" height="2000"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="recipeImg" width="1820" height="2030"/>
         <systemColor name="systemBackgroundColor">
