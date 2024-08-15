@@ -343,7 +343,7 @@ extension HomeViewController {
         }
     }
     
-    private func handleScrollView1ButtonSelection(_ sender: UIButton) {
+    private func handleScrollView1ButtonSelection(_ sender: UIButton) { 
         if sender.backgroundColor == .systemRed {
             resetScrollView1()
         } else {
