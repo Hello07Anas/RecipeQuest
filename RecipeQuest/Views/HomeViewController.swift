@@ -25,26 +25,25 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     private var viewModel = HomeViewModel()
     private var cancellables: Set<AnyCancellable> = []
     
-    private let apiParameters = APIParameters.all
-    private var currentKey: String?
-    private var recipes: [Recipe] = []
-
+    private let apiParameters = APIParameters.filters
+    private var currentKey: Int = 0
+    
+    var selectedFilters: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         searchBar.delegate = self
-
+        
         setupUI()
         
         viewModel.$recipes
             .receive(on: DispatchQueue.main)
             .sink { [weak self] recipes in
-                self?.recipes = recipes
                 self?.recipesTableView.reloadData()
             }
             .store(in: &cancellables)
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -60,11 +59,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    private func updateScrollView2() {
-        guard let key = currentKey, let values = apiParameters[key] else {
-            return
-        }
-        
+    private func updateScrollView2(index: Int) {
+                
+        let values = apiParameters[index].1
+        //print("values is \(values)")
         buttons2.forEach { $0.removeFromSuperview() }
         buttons2.removeAll()
         
@@ -72,12 +70,21 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     private func handleScrollView2ButtonSelection(_ sender: UIButton) {
-        if sender.backgroundColor == .systemRed {
-            sender.backgroundColor = .systemBlue
+        if sender.backgroundColor == .systemMint {
+            sender.backgroundColor = .systemCyan
         } else {
-            buttons2.forEach { $0.backgroundColor = .systemBlue }
-            sender.backgroundColor = .systemRed
+            //buttons2.forEach { $0.backgroundColor = .systemCyan }
+            sender.backgroundColor = .systemMint
         }
+        
+        let value = "\(apiParameters[currentKey].0)=\(apiParameters[currentKey].1[sender.tag])"
+        
+        if selectedFilters.contains(value) {
+            selectedFilters.removeAll { $0 == value }
+        } else {
+            selectedFilters.append(value)
+        }
+        print(selectedFilters)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -95,18 +102,27 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         }) { _ in
             self.hideScrollViews()
             self.resetButtonStates()
-            self.updateUpConstraintView()
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchTerm = searchBar.text, !searchTerm.isEmpty else { return }
+        guard let query = searchBar.text, !query.isEmpty else { return }
         
-        print("Search button clicked with term: \(searchTerm)")
-        viewModel.fetchRecipes(searchTerm: searchTerm)
+        let endPoint = selectedFilters.joined(separator: "&")
         
+        viewModel.fetchRecipes(query: query, endPoint: endPoint)
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.scrollView1.alpha = 0
+            self.scrollView2.alpha = 0
+        }) { _ in
+            self.scrollView1.isHidden = true
+            self.scrollView2.isHidden = true
+            
+            self.updateUpConstraintView()
+        }
+
         searchBar.resignFirstResponder()
-        searchBar.text = ""
     }
 }
 
@@ -115,7 +131,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        return viewModel.recipes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,8 +139,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        let recipe = recipes[indexPath.row]
+        let recipe = viewModel.recipes[indexPath.row]
         cell.setup(with: recipe)
+        
+        if indexPath.row == viewModel.recipes.count - 1 {
+            viewModel.getNextRecipes()
+        }
         
         return cell
     }
@@ -133,7 +153,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let selectedRecipe = recipes[indexPath.row]
+        let selectedRecipe = viewModel.recipes[indexPath.row]
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailVC = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as? RecipeDetailViewController {
@@ -143,8 +163,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-
-
 
 
 
@@ -159,7 +177,6 @@ extension HomeViewController {
     
     private func setupSearchBar() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.delegate = self
         view.addSubview(searchBar)
         
         NSLayoutConstraint.activate([
@@ -171,45 +188,50 @@ extension HomeViewController {
     }
     
     private func setupScrollViews() {
-        let keys = Array(apiParameters.keys)
+        let keys = apiParameters.map { $0.0 }
         
         setupScrollView(scrollView1, with: keys, topConstraint: searchBar.bottomAnchor)
-        
         hideScrollViews()
     }
     
-    private func setupScrollView(_ scrollView: UIScrollView, with titles: [String], topConstraint: NSLayoutYAxisAnchor, padding: CGFloat = 0) {
+    private func setupScrollView(_ scrollView: UIScrollView, with titles: [String], topConstraint: NSLayoutYAxisAnchor, padding: CGFloat = 4) {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         
-        let topPadding: CGFloat = scrollView == scrollView1 ? 8 : padding
-        
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topConstraint, constant: topPadding),
+            scrollView.topAnchor.constraint(equalTo: topConstraint, constant: padding),
             scrollView.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         setupButtons(in: scrollView, with: titles)
     }
-    /*
+
     private func setupButtons(in scrollView: UIScrollView, with titles: [String]) {
         let buttonHeight: CGFloat = 40
         let buttonPadding: CGFloat = 10
-        
+
         var previousButton: UIButton?
         var buttons: [UIButton] = []
-        
-        for title in titles {
+
+        for index in 0..<titles.count {
             let button = UIButton(type: .system)
-            button.setTitle(" \(title) ", for: .normal)
+            button.tag = index
+            
+            button.setTitle(" \(titles[index].capitalized) ", for: .normal)
             button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = .systemBlue
+            //selectedFilters.map{ $0.split(separator: "=").last ?? "" }
+            let isSeletedFitlers = selectedFilters.filter{ $0.contains(titles[index]) }.count > 0
+            
+            
+            button.backgroundColor = isSeletedFitlers ? .systemMint : .systemCyan
+            
+            
             button.layer.cornerRadius = 5
-            button.addTarget(self, action: #selector(segmentSelected(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(segmentSelected(_:)), for: .touchUpInside)
             scrollView.addSubview(button)
             buttons.append(button)
             
@@ -244,77 +266,10 @@ extension HomeViewController {
             buttons2 = buttons
         }
     }
-    */
-    
-    private func setupButtons(in scrollView: UIScrollView, with titles: [String]) {
-        let buttonHeight: CGFloat = 40
-        let buttonPadding: CGFloat = 10
-        
-        var previousButton: UIButton?
-        var buttons: [UIButton] = []
-        
-        for title in titles {
-            let button = UIButton(type: .system)
-            button.setTitle(" \(title) ", for: .normal)
-            button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = .systemCyan // Change to systemCyan
-            button.layer.cornerRadius = 5
-            button.addTarget(self, action: #selector(segmentSelected(_:)), for: .touchUpInside)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            scrollView.addSubview(button)
-            buttons.append(button)
-            
-            NSLayoutConstraint.activate([
-                button.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                button.heightAnchor.constraint(equalToConstant: buttonHeight)
-            ])
-            
-            if let previousButton = previousButton {
-                NSLayoutConstraint.activate([
-                    button.leadingAnchor.constraint(equalTo: previousButton.trailingAnchor, constant: buttonPadding)
-                ])
-            } else {
-                NSLayoutConstraint.activate([
-                    button.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
-                ])
-            }
-            
-            previousButton = button
-        }
-        
-        if let lastButton = previousButton {
-            NSLayoutConstraint.activate([
-                lastButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -buttonPadding)
-            ])
-            scrollView.contentSize = CGSize(width: lastButton.frame.maxX + buttonPadding, height: buttonHeight)
-        }
-        
-        if scrollView == scrollView1 {
-            buttons1 = buttons
-        } else {
-            buttons2 = buttons
-        }
-    }
-
-    private func selectButtonInScrollView1(_ sender: UIButton) {
-        buttons1.forEach { $0.backgroundColor = .systemCyan } // Change to systemCyan
-        sender.backgroundColor = .systemMint // Change to systemMint
-        selectedButton = sender
-        
-        currentKey = sender.titleLabel?.text?.trimmingCharacters(in: .whitespaces)
-        updateScrollView2()
-        
-        scrollView2.isHidden = false
-        UIView.animate(withDuration: 0.3) {
-            self.scrollView2.alpha = 1
-        }
-        updateUpConstraintView()
-    }
-
     
     private func resetButtonStates() {
-        buttons1.forEach { $0.backgroundColor = .systemBlue }
-        buttons2.forEach { $0.backgroundColor = .systemBlue }
+        buttons1.forEach { $0.backgroundColor = .systemCyan }
+        buttons2.forEach { $0.backgroundColor = .systemCyan }
         selectedButton = nil
     }
     
@@ -324,7 +279,7 @@ extension HomeViewController {
         scrollView2.alpha = 0
         scrollView2.isHidden = true
     }
-    
+
     private func updateUpConstraintView() {
         let topOffset: CGFloat = {
             if !scrollView2.isHidden {
@@ -343,17 +298,43 @@ extension HomeViewController {
         }
     }
     
-    private func handleScrollView1ButtonSelection(_ sender: UIButton) { 
-        if sender.backgroundColor == .systemRed {
-            resetScrollView1()
-        } else {
-            selectButtonInScrollView1(sender)
+    private func handleScrollView1ButtonSelection(_ sender: UIButton) {
+        if sender == selectedButton {
+            deselectButton(sender)
+            return
         }
+        
+        if sender.tag == 0 {
+            selectedFilters = []
+        }
+        
+        print("handleScrollView1ButtonSelection")
+        
+        buttons1.forEach { $0.backgroundColor = .systemCyan }
+        sender.backgroundColor = .systemMint
+        selectedButton = sender
+        
+        currentKey = sender.tag
+
+        updateScrollView2(index: sender.tag)
+        
+        print("=======")
+        print(sender.titleLabel)
+        print(currentKey)
+        print("tag is \(sender.tag)")
+        print("=======")
+        
+        scrollView2.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.scrollView2.alpha = 1
+        }
+        updateUpConstraintView()
     }
     
-    private func resetScrollView1() {
-        buttons1.forEach { $0.backgroundColor = .systemBlue }
+    private func deselectButton(_ button: UIButton) {
+        button.backgroundColor = .systemCyan
         selectedButton = nil
+        currentKey = 0
         
         UIView.animate(withDuration: 0.3, animations: {
             self.scrollView2.alpha = 0
@@ -361,8 +342,6 @@ extension HomeViewController {
             self.scrollView2.isHidden = true
             self.updateUpConstraintView()
         }
-        
-        updateUpConstraintView()
     }
 }
 

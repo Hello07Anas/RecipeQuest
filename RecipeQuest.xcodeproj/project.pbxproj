@@ -21,7 +21,6 @@
 		4CAE87A12C6B8414009BF625 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */; };
 		4CAE87A62C6B84BF009BF625 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87A52C6B84BF009BF625 /* RecipeService.swift */; };
 		4CAE87AD2C6B8AF7009BF625 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87AC2C6B8AF7009BF625 /* API.swift */; };
-		4CCBB5582C6C5C88003F4FE7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCBB5572C6C5C88003F4FE7 /* Extensions.swift */; };
 		4CCC8A6C2C6BAA9A00593B8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCC8A6B2C6BAA9A00593B8E /* HomeViewController.swift */; };
 		4CCC8A6E2C6BB66F00593B8E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCC8A6D2C6BB66F00593B8E /* HomeViewModel.swift */; };
 		4CFE5B272C6E1B9B0021878D /* APIParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFE5B262C6E1B9B0021878D /* APIParameters.swift */; };
@@ -42,7 +41,6 @@
 		4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		4CAE87A52C6B84BF009BF625 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		4CAE87AC2C6B8AF7009BF625 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		4CCBB5572C6C5C88003F4FE7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4CCC8A6B2C6BAA9A00593B8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4CCC8A6D2C6BB66F00593B8E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4CFE5B262C6E1B9B0021878D /* APIParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParameters.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				4CAE87932C6B82A1009BF625 /* Constants.swift */,
-				4CCBB5572C6C5C88003F4FE7 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 				4CAE87942C6B82A1009BF625 /* Constants.swift in Sources */,
 				4CCC8A6E2C6BB66F00593B8E /* HomeViewModel.swift in Sources */,
 				4CFE5B272C6E1B9B0021878D /* APIParameters.swift in Sources */,
-				4CCBB5582C6C5C88003F4FE7 /* Extensions.swift in Sources */,
 				4CAE87A62C6B84BF009BF625 /* RecipeService.swift in Sources */,
 				4CAE87972C6B8317009BF625 /* Recipe.swift in Sources */,
 				4CCC8A6C2C6BAA9A00593B8E /* HomeViewController.swift in Sources */,

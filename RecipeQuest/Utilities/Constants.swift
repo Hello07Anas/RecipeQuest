@@ -15,10 +15,7 @@ struct K {
         static let TYPE = "public"
     }
     
-    struct HealthFilters {
-        static let lowSugar = "low-sugar"
-        static let dairyFree = "dairy-free"
-        static let vegan = "vegan"
+    struct Types {
         static let all = "all"
     }
     

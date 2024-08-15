@@ -14,27 +14,25 @@ enum RecipeServiceError: Error {
 }
 
 class RecipeService {
-    
-    func searchRecipes(query: String, mainFilter: String?, subFilter: String?, completion: @escaping (Result<[Recipe], RecipeServiceError>) -> Void) {
-        let url = API.searchURL(query: query, mainFilter: mainFilter, subFilter: subFilter)
+    func searchRecipes(query: String, endPoint: String?, completion: @escaping (Result<RecipeSearchResponse, RecipeServiceError>) -> Void) {
+        let url = API.searchURL(query: query, endPoint: endPoint)
         
         AF.request(url).validate().responseDecodable(of: RecipeSearchResponse.self) { response in
             switch response.result {
             case .success(let data):
-                completion(.success(data.hits.map { $0.recipe }))
+                completion(.success(data))
             case .failure:
                 completion(.failure(.requestFailed))
             }
         }
     }
-
-    func fetchRecipe(by hash: String, completion: @escaping (Result<Recipe, RecipeServiceError>) -> Void) {
-        let url = API.recipeURL(by: hash)
+    
+    func nextRecipes(url :String?, completion: @escaping (Result<RecipeSearchResponse, RecipeServiceError>) -> Void) {
         
-        AF.request(url).validate().responseDecodable(of: Recipe.self) { response in
+        AF.request(url ?? "").validate().responseDecodable(of: RecipeSearchResponse.self) { response in
             switch response.result {
-            case .success(let recipe):
-                completion(.success(recipe))
+            case .success(let data):
+                completion(.success(data))
             case .failure:
                 completion(.failure(.requestFailed))
             }

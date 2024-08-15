@@ -10,12 +10,13 @@ import Foundation
 
 struct API {
     
-    static func searchURL(query: String, mainFilter: String?, subFilter: String?) -> String {
-        var url = "\(K.API.BASE_URL)?type=\(K.API.TYPE)&q=\(query)&app_id=\(K.API.APP_ID)&app_key=\(K.API.APP_KEY)" // this the defult will retuen all
-        
-        if let mainFilter = mainFilter, let subFilter = subFilter, mainFilter != K.HealthFilters.all {
-            url += "&\(mainFilter)=\(subFilter)"
+    static func searchURL(query: String, endPoint: String?) -> String {
+        // this the defult will retuen filters
+        var url = "\(K.API.BASE_URL)?type=\(K.API.TYPE)&q=\(query)&app_id=\(K.API.APP_ID)&app_key=\(K.API.APP_KEY)"
+        if let endPoint {
+            url += "&\(endPoint)"
         }
+        
         
         return url
     }

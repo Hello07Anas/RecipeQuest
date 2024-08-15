@@ -7,18 +7,20 @@
 
 import Foundation
 
+// MARK: - refactor the arr of string tuble better I think
 
 struct APIParameters {
-    static let all: [String: [String]] = [
-        "diet": [
+    static let filters: [(String, [String])] = [
+        ("all", []),
+        ("diet", [
             "balanced",
             "high-fiber",
             "high-protein",
             "low-carb",
             "low-fat",
             "low-sodium"
-        ],
-        "health": [
+        ]),
+        ("health", [
             "alcohol-cocktail",
             "alcohol-free",
             "celery-free",
@@ -55,8 +57,8 @@ struct APIParameters {
             "vegan",
             "vegetarian",
             "wheat-free"
-        ],
-        "cuisineType": [
+        ]),
+        ("cuisineType", [
             "American",
             "Asian",
             "British",
@@ -75,15 +77,15 @@ struct APIParameters {
             "Nordic",
             "South American",
             "South East Asian"
-        ],
-        "mealType": [
+        ]),
+        ("mealType", [
             "Breakfast",
             "Dinner",
             "Lunch",
             "Snack",
             "Teatime"
-        ],
-        "dishType": [
+        ]),
+        ("dishType", [
             "Biscuits and cookies",
             "Bread",
             "Cereals",
@@ -100,6 +102,6 @@ struct APIParameters {
             "Soup",
             "Starter",
             "Sweets"
-        ]
+        ])
     ]
 }
