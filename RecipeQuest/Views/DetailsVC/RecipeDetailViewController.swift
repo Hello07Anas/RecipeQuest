@@ -30,6 +30,7 @@ class RecipeDetailViewController: UIViewController {
     private func setupUI() {
         guard let viewModel = viewModel else { return }
         updateRecipeDetails(with: viewModel)
+        ImageStyling.style(image: recipeImg)
     }
     
     private func updateRecipeDetails(with viewModel: RecipeDetailViewModelProtocol) {

@@ -24,7 +24,7 @@ class HomeViewModel {
                 self?.nextLink = data._links.next.href
             case .failure(let error):
                 self?.recipes = []
-                print("Failed to fetch recipes: \(error)")
+                print("Failed to fetch recipes: \(error.localizedDescription)")
             }
         }
     }
@@ -36,7 +36,7 @@ class HomeViewModel {
                 self?.recipes.append(contentsOf: data.hits.map { $0.recipe})
                 self?.nextLink = data._links.next.href
             case .failure(let error):
-                print("Failed to fetch recipes: \(error)")
+                print("Failed to fetch recipes: \(error.localizedDescription)")
             }
         }
     }

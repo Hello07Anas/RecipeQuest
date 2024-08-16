@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C43DC2C2C6F48E4005AF806 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DC2B2C6F48E4005AF806 /* TableViewExtension.swift */; };
+		4C43DC2E2C6F49A5005AF806 /* UISetupExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DC2D2C6F49A5005AF806 /* UISetupExtension.swift */; };
+		4C43DC312C6F6EAA005AF806 /* ImageStyleing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DC302C6F6EAA005AF806 /* ImageStyleing.swift */; };
 		4CAE87762C6B7CA8009BF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87752C6B7CA8009BF625 /* AppDelegate.swift */; };
 		4CAE87782C6B7CA8009BF625 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE87772C6B7CA8009BF625 /* SceneDelegate.swift */; };
 		4CAE877D2C6B7CA8009BF625 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4CAE877C2C6B7CA8009BF625 /* Base */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C43DC2B2C6F48E4005AF806 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		4C43DC2D2C6F49A5005AF806 /* UISetupExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISetupExtension.swift; sourceTree = "<group>"; };
+		4C43DC302C6F6EAA005AF806 /* ImageStyleing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyleing.swift; sourceTree = "<group>"; };
 		4CAE87722C6B7CA8009BF625 /* RecipeQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAE87752C6B7CA8009BF625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CAE87772C6B7CA8009BF625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C43DC292C6F4800005AF806 /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				4C43DC2F2C6F4C61005AF806 /* Cells */,
+				4CCC8A6B2C6BAA9A00593B8E /* HomeViewController.swift */,
+				4C43DC2B2C6F48E4005AF806 /* TableViewExtension.swift */,
+				4C43DC2D2C6F49A5005AF806 /* UISetupExtension.swift */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		4C43DC2A2C6F480E005AF806 /* DetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */,
+			);
+			path = DetailsVC;
+			sourceTree = "<group>";
+		};
+		4C43DC2F2C6F4C61005AF806 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CFE5B2D2C6E31FB0021878D /* RecipeTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4CAE87692C6B7CA8009BF625 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAE87932C6B82A1009BF625 /* Constants.swift */,
+				4C43DC302C6F6EAA005AF806 /* ImageStyleing.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -123,9 +157,8 @@
 		4CAE87992C6B8331009BF625 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4CFE5B2C2C6E31DD0021878D /* Cells */,
-				4CCC8A6B2C6BAA9A00593B8E /* HomeViewController.swift */,
-				4CAE87A02C6B8414009BF625 /* RecipeDetailViewController.swift */,
+				4C43DC2A2C6F480E005AF806 /* DetailsVC */,
+				4C43DC292C6F4800005AF806 /* HomeVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,14 +203,6 @@
 				4CAE87802C6B7CAC009BF625 /* LaunchScreen.storyboard */,
 			);
 			path = LaunchScreen;
-			sourceTree = "<group>";
-		};
-		4CFE5B2C2C6E31DD0021878D /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4CFE5B2D2C6E31FB0021878D /* RecipeTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +288,9 @@
 			files = (
 				4CAE87AD2C6B8AF7009BF625 /* API.swift in Sources */,
 				4CAE879D2C6B836E009BF625 /* RecipeDetailViewModel.swift in Sources */,
+				4C43DC312C6F6EAA005AF806 /* ImageStyleing.swift in Sources */,
 				4CAE87762C6B7CA8009BF625 /* AppDelegate.swift in Sources */,
+				4C43DC2E2C6F49A5005AF806 /* UISetupExtension.swift in Sources */,
 				4CAE87A12C6B8414009BF625 /* RecipeDetailViewController.swift in Sources */,
 				4CAE87782C6B7CA8009BF625 /* SceneDelegate.swift in Sources */,
 				4CFE5B2E2C6E31FB0021878D /* RecipeTableViewCell.swift in Sources */,
@@ -273,6 +300,7 @@
 				4CAE87A62C6B84BF009BF625 /* RecipeService.swift in Sources */,
 				4CAE87972C6B8317009BF625 /* Recipe.swift in Sources */,
 				4CCC8A6C2C6BAA9A00593B8E /* HomeViewController.swift in Sources */,
+				4C43DC2C2C6F48E4005AF806 /* TableViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
