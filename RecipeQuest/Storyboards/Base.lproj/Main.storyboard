@@ -46,6 +46,9 @@
                                                     <rect key="frame" x="188.66666666666663" y="29.666666666666671" width="168.33333333333337" height="39"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Source"/>
+                                                    <connections>
+                                                        <action selector="recipeSourceBtnTapped:" destination="Ge6-yg-E73" eventType="touchUpInside" id="onV-rj-8e0"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -117,7 +120,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                 <connections>
-                                    <action selector="backBtnTaped:" destination="ITC-Ao-Wkf" eventType="touchUpInside" id="kUi-vx-3YK"/>
+                                    <action selector="backButtonTapped:" destination="ITC-Ao-Wkf" eventType="touchUpInside" id="gZq-28-Hs5"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipeImg" translatesAutoresizingMaskIntoConstraints="NO" id="3ar-aE-32c">
@@ -196,11 +199,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="recipeCaloriesOT" destination="V3n-GS-zhn" id="EOH-kU-Z0W"/>
-                        <outlet property="recipeImg" destination="3ar-aE-32c" id="2bY-ZZ-n13"/>
-                        <outlet property="recipeNameOT" destination="kOh-eL-qd1" id="5AN-mq-6Om"/>
-                        <outlet property="recipeTotalTimeOT" destination="H4k-Za-hMz" id="4oP-dW-zPP"/>
-                        <outlet property="recipeTotalWeightOT" destination="WzI-Sw-6z1" id="hXE-Yk-LdJ"/>
+                        <outlet property="recipeCaloriesLabel" destination="V3n-GS-zhn" id="fQL-On-36D"/>
+                        <outlet property="recipeImg" destination="3ar-aE-32c" id="T6h-Ve-eyS"/>
+                        <outlet property="recipeNameLabel" destination="kOh-eL-qd1" id="fw9-e1-cDi"/>
+                        <outlet property="recipeTotalTimeLabel" destination="H4k-Za-hMz" id="wwy-bx-L13"/>
+                        <outlet property="recipeTotalWeightLabel" destination="WzI-Sw-6z1" id="ulZ-SY-b7T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwj-qq-n8Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

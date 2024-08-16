@@ -10,7 +10,6 @@ import Alamofire
 
 enum RecipeServiceError: Error {
     case requestFailed
-    case decodingError
 }
 
 class RecipeService {

@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct RecipeDetailViewModel {
+protocol RecipeDetailViewModelProtocol {
+    var recipeName: String { get }
+    var caloriesPerGramText: String { get }
+    var totalWeightText: String { get }
+    var totalTimeText: String { get }
+    var imageURL: URL? { get }
+}
+
+struct RecipeDetailViewModel: RecipeDetailViewModelProtocol {
+    
     private let recipe: Recipe
 
     init(recipe: Recipe) {
@@ -18,16 +27,18 @@ struct RecipeDetailViewModel {
         return recipe.label
     }
     
-    var caloriesText: String {
-        return String(format: "Calories: %.1f", recipe.calories)
+    var caloriesPerGramText: String {
+        guard recipe.totalWeight > 0 else { return "N/A" }
+        let caloriesPerUnit = recipe.calories / recipe.totalWeight
+        return String(format: "%.1f per gram", caloriesPerUnit)
     }
     
     var totalWeightText: String {
-        return String(format: "Total Weight: %.1f g", recipe.totalWeight)
+        return String(format: "%.1f g", recipe.totalWeight)
     }
     
     var totalTimeText: String {
-        return recipe.totalTime > 0 ? "Total Time: \(recipe.totalTime) mins" : "Total Time: N/A"
+        return "\(recipe.totalTime) min"
     }
     
     var imageURL: URL? {

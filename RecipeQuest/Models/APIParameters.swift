@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - refactor the arr of string tuble better I think
+// MARK: - refactor the dict of string to tuble of string better I think
 
 struct APIParameters {
     static let filters: [(String, [String])] = [
