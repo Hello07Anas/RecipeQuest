@@ -335,11 +335,11 @@ extension HomeViewController {
 
         updateScrollView2(index: sender.tag)
         
-        print("=======")
-        print(sender.titleLabel)
-        print(currentKey)
-        print("tag is \(sender.tag)")
-        print("=======")
+//        print("=======")
+//        print(sender.titleLabel)
+//        print(currentKey)
+//        print("tag is \(sender.tag)")
+//        print("=======")
         
         scrollView2.isHidden = false
         UIView.animate(withDuration: 0.3) {
@@ -361,19 +361,3 @@ extension HomeViewController {
         }
     }
 }
-
-// Desgin Pattern is A proven soulution to a common problem
-
-/*
- الحمد لله علي كل حال
- 
- 15 Aug
- 
- 1. Network Call and print data in console " when click serach feach data.
- 2. desgin cell of table.
- 3. desgin details.
- 4. presnt data in table.
- 5. navigate when click on table to details and present its data.
- 6. clean and maintain code as possible as could.
- 
- */
