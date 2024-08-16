@@ -1,6 +1,7 @@
 # Recipe Finder App
 
-https://github.com/user-attachments/assets/978efa4b-3e17-4da8-b061-f92994237723
+https://github.com/user-attachments/assets/c1945aa2-9058-4887-9e99-385c79d691a5
+
 
 ## Overview
 **Recipe Finder** is an iOS application that allows users to search for recipes by entering a recipe name or food ingredient in the search bar. The app provides users with an easy way to filter search results based on dietary preferences like Low Sugar, Dairy-Free, and Vegan. The app also supports seamless pagination and a detailed view for each recipe.
